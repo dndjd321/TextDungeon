@@ -7,7 +7,7 @@ class Slime : public Monster {
 public:
     // 생성자: 슬라임은 기본적으로 체력이 낮고 속도가 느린 컨셉으로 설정해봅니다.
     // Monster(이름, 체력, 공격력, 방어력, 속도)
-    Slime() : Monster("초록 슬라임", 30, 8, 2, 3) {}
+    Slime() : Monster("초록 슬라임", 30, 8, 2, 3, 15, 30, 15) {}
 
     // Monster 클래스에서 virtual로 선언했던 attackEffect를 재정의(Override)합니다.
     void attackEffect() override {

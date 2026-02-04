@@ -4,9 +4,10 @@
 class Monster {
 protected:
     std::string name;
-    int hp, attack, defense, spd;
+    int hp, attack, defense, spd, minGold, maxGold, expReward;
+
 public:
-    Monster(std::string n, int h, int a, int d, int s);
+    Monster(std::string n, int h, int a, int d, int s, int minG, int maxG, int exp);
     virtual ~Monster() {} // °¡»ó ¼Ò¸êÀÚ
     virtual void attackEffect() = 0;
     void takeDamage(int damage);
@@ -15,6 +16,9 @@ public:
     int getHp() { return hp; }
     int getAtk() { return attack; }
     int getSpd() { return spd; }
+	int dropGold() { return rand() % (maxGold - minGold + 1) + minGold; }
+	int getExpReward() { return expReward; }
+
     std::string getName() { return name; }
 };
 

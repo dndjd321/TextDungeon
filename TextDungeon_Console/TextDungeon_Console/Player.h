@@ -6,6 +6,10 @@ class Player {
 private:
     std::string name;
     int hp, maxHp, attack, defense, spd, gold;
+	int level = 1;
+    int exp = 0;
+	int maxExp = 100;   // 다음 레벨업까지 필요한 경험치
+	int statPoints = 0; // 레벨업 시 획득하는 스탯 포인트
     Item* equippedItem;
 
 public:
@@ -18,6 +22,13 @@ public:
     void rest();
     void showStatus();
 
+    // 경험치 획득 및 레벨업 체크
+	void gainExp(int amount);
+	void levelUp();
+
+    // 스탯 포인트 투자 함수
+	void useStatPoint(int choice);
+
     // 최종 스탯 계산 (기본 스탯 + 아이템 보너스)
     int getTotalAtk();
     int getTotalDef();
@@ -27,6 +38,11 @@ public:
     // 데이터 확인용 Getter
     int getHp() { return hp; }
     int getGold() { return gold; }
+	int getLevel() { return level; }
+	int getExp() { return exp; }
+	int getMaxExp() { return maxExp; }
+	int getStatPoints() { return statPoints; }
+
     std::string getName() { return name; }
 
     // 아이템 관련

@@ -21,7 +21,7 @@ int main() {
     while (hero.getHp() > 0) {
         system("cls");
         hero.showStatus();
-        cout << "\n[1] 던전 입장  [2] 여관 휴식(20G)  [3] 대장간(강화)  [4] 게임 종료" << endl;
+        cout << "\n[1] 던전 입장  [2] 여관 휴식(20G)  [3] 대장간(강화) [4] 상태창/스탯투자 [5] 게임 종료" << endl;
         cout << "입력: ";
         int menu; cin >> menu;
 
@@ -50,8 +50,12 @@ int main() {
                 system("pause");
             }
             if (hero.getHp() > 0) {
-                cout << "\n전투 승리! 보상으로 50골드를 얻었습니다." << endl;
-                hero.gainGold(50);
+				int rewardG = enemy->dropGold();
+                int rewardE = enemy->getExpReward();
+                cout << "\n전투 승리!" << endl;
+                cout << "보상 : " << rewardG << "G / " << rewardE << "EXP를 얻었습니다." << endl;
+				hero.gainGold(rewardG);
+                hero.gainExp(rewardE);
             }
             delete enemy;
             system("pause");
@@ -100,7 +104,30 @@ int main() {
                 }
             }
         }
-        else if (menu == 4) break;
+        else if (menu == 4) {
+            bool isStatMenu = true;
+            while (isStatMenu) {
+				system("cls");
+				hero.showStatus();
+
+                cout << "\n[ 보유 스탯 포인트: " << hero.getStatPoints() << " ]" << endl;
+                cout << "1. 공격력 투자 (+2)" << endl;
+                cout << "2. 방어력 투자 (+2)" << endl;
+                cout << "3. 스피드 투자 (+2)" << endl;
+                cout << "4. 체력 투자 (+10)" << endl;
+                cout << "5. 나가기" << endl;
+                cout << "선택: ";
+
+                int sChoice; cin >> sChoice;
+                if (sChoice == 5) isStatMenu = false;
+                else if (hero.getStatPoints() > 0) hero.useStatPoint(sChoice);
+                else {
+                    cout << "포인트가 부족합니다!" << endl;
+                    system("pause");
+                }
+            }
+        }
+        else if (menu == 5) break;
     }
 
     delete starterWeapon; // 게임 종료 시 메모리 해제
