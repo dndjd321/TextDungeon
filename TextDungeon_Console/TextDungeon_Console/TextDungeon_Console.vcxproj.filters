@@ -19,6 +19,9 @@
     <Filter Include="소스 파일\Monsters">
       <UniqueIdentifier>{72856d5a-b04c-49dd-909e-0fafd998c43b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Items">
+      <UniqueIdentifier>{a7ae9f5f-50a3-427f-852e-cfea418a1032}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,7 +37,10 @@
       <Filter>소스 파일\Monsters</Filter>
     </ClCompile>
     <ClCompile Include="Goblin.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="Goblin.h">
       <Filter>소스 파일\Monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>소스 파일\Items</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

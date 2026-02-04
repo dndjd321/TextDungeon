@@ -28,7 +28,8 @@ int main() {
         cout << "=== [ 마을 ] ===" << endl;
         cout << "1. 던전 입장 (전투)" << endl;
         cout << "2. 여관에서 휴식 (HP 회복, 20골드)" << endl;
-        cout << "3. 게임 종료" << endl;
+        cout << "3. 무기 상점 방문 (플레이어 강화)" << endl;
+        cout << "4. 게임 종료" << endl;
         cout << "선택: ";
 
         int menu;
@@ -93,12 +94,84 @@ int main() {
 			delete enemy;   // 동적 할당 해제
 			system("pause"); // 잠시 멈춤
         }
-        else if (menu == 2) {
+        else if (menu == 2) {   // 여관 기능
 			//  휴식 로직 ( 골드 체크 및 HP 회복 )
-            // hero.rest(); 등 함수 구현하기
+            if (hero.getGold() >= 20) {
+				hero.loseGold(20);              // 20골드 지불
+				hero.rest((hero.getHp() / 2));  // 최대 HP의 절반 회복
+            }
+            else {
+                cout << "\n[!] 골드가 부족합니다! ( 필요 : 20골드 )" << endl;
+            }
+            
+            system("pause");
         }
-        else if (menu == 3) {
-			gameRunning = false;
+        else if (menu == 3) {   // 상점 기능
+            bool isShop = true; // 상점 루프 제어 변수
+
+            while (isShop) {
+                system("cls");
+                hero.showStatus();  // 내 돈과 스택 확인용
+
+                cout << "\n--- [ 무기 상점 ] ---" << endl;
+                cout << "1. 나무 검 (공격력 +5) - 50골드" << endl;
+                cout << "2. 강철 검 (공격력 +12) - 110골드" << endl;
+                cout << "3. 녹슨 방패 (방어력 +5) - 50골드" << endl;
+                cout << "4. 강철 방패 (방어력 +12) - 110골드" << endl;
+                cout << "5. 헌 신발 (스피드 +2) - 30골드" << endl;
+                cout << "6. 가죽 부츠(스피드 +7) - 100골드" << endl;
+                cout << "7. 체력증진물약(소) (최대 체력 +10) - 100골드" << endl;
+                cout << "8. 체력증진물약(대) (최대 체력 +25) - 230골드" << endl;
+                cout << "9. 돌아가기" << endl;
+                cout << "구매할 아이템: ";
+
+                int shopMenu;
+                cin >> shopMenu;
+
+                if (shopMenu == 1) {        // 나무 검 : 공격 + 5 : 50골
+                    if (hero.getGold() >= 50) {
+                        hero.loseGold(50);
+                        hero.addAtk(5);
+                    }
+                    else {
+                        cout << "\n[!] 골드가 부족합니다." << endl;
+                    }
+                }
+                else if (shopMenu == 2) {   // 강철 검 : 공격 + 12 : 110골
+
+                }
+                else if (shopMenu == 3) {   // 녹슨 방패 : 방어 + 5 : 50골
+
+                }
+                else if (shopMenu == 4) {   // 강철 방패 : 방어 + 12 : 110골
+
+                }
+                else if (shopMenu == 5) {   // 헌 신발 : 스피드 + 2 : 30골
+
+                }
+                else if (shopMenu == 6) {   // 가죽 부츠 : 스피드 +7 : 100골
+
+                }
+                else if (shopMenu == 7) {   // 체력증진물약(소) : 최대체력 + 10 : 100골
+
+                }
+                else if (shopMenu == 8) {   // 체력증진물약(대) : 최대체력 + 25 : 230골
+
+                }
+                else if (shopMenu == 9) {   // 돌아가기
+                    cout << "\n마을로 돌아갑니다..." << endl;
+                    isShop = false; // 루프 탈출하도록 제어 변수 false로 변경
+                }
+                else {
+                    cout << "\n[!] 잘못된 입력입니다." << endl;
+                    system("pause");
+                }
+            }
+            
+
+        }
+        else if (menu == 4) {   // 게임 종료
+            gameRunning = false;
         }
     }
 
