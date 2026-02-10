@@ -42,6 +42,9 @@
     <ClCompile Include="Item.cpp">
       <Filter>소스 파일\Items</Filter>
     </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>소스 파일\Monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Monster.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>소스 파일\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>소스 파일\Monsters</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
